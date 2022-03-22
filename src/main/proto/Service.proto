@@ -1,0 +1,21 @@
+syntax = "proto3";
+package queue.grpc;
+
+message QueueRequest{}
+
+message QueueResponse{
+  string queue = 1;
+}
+
+message addRequest{
+  string name = 1;
+}
+
+message resultOfAdditionsToQueue{
+  bool result = 1;
+}
+
+service Queue{
+  rpc aboutQueue(QueueRequest) returns (stream QueueResponse);
+  rpc addNewStudentToQueue(addRequest) returns (resultOfAdditionsToQueue);
+}
